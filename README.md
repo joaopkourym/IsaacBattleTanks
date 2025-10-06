@@ -6,26 +6,66 @@ O projeto implementa movimentação, tiro, colisões e comportamentos básicos d
 
 📘 Descrição
 
-O jogo consiste em batalhas entre tanques em diferentes mapas.
-O jogador pode se mover, atirar e enfrentar inimigos controlados por IA.
-O código está estruturado em módulos que separam a lógica principal, entidades e utilidades.
+O jogo consiste em batalhas entre tanques.
+O jogador pode enfrentar inimigos controlados por IA.
+O código está estruturado em módulos que separam a lógica principal e utilidades.
 
 
 🗂 Estrutura do Projeto
 
 IsaacBattleTanks/
 │
-├── src/                 # Código-fonte principal
-│   ├── main/            # Loop do jogo e execução principal
-│   ├── entities/        # Classes de tanques, projéteis e inimigos
-│   ├── map/             # Mapas e lógica de carregamento
-│   ├── utils/           # Funções auxiliares e constantes
-│   └── ui/              # Interface do jogo (menus, HUD, etc.)
+├── data/                     # Arquivos de dados (ex: CSVs)
+│   └── tanques.csv
 │
-├── assets/              # Recursos (imagens, sons, sprites)
-├── out/                 # Arquivos compilados (gerados automaticamente)
+├── demo/                     # Módulo principal do jogo
+│   ├── pom.xml               # Arquivo de configuração Maven
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── java/
+│   │   │   │   └── com/
+│   │   │   │       └── isaactanks/
+│   │   │   │           ├── Main.java
+│   │   │   │           ├── manager/
+│   │   │   │           │   └── ArenaManager.java
+│   │   │   │           ├── model/
+│   │   │   │           │   ├── Canhao.java
+│   │   │   │           │   ├── ClasseTanque.java
+│   │   │   │           │   ├── Metralhadora.java
+│   │   │   │           │   ├── Modulo.java
+│   │   │   │           │   ├── Tanque.java
+│   │   │   │           │   └── TipoPiloto.java
+│   │   │   │           └── util/
+│   │   │   │               └── CSVHandler.java
+│   │   └── test/
+│   │       └── java/
+│   │           └── battletanks/
+│   │               ├── CSVHandlerTest.java
+│   │               └── TanqueTest.java
+│   └── target/               # Saída de build (classes compiladas)
+│       ├── classes/
+│       │   └── com/
+│       │       └── isaactanks/
+│       │           ├── Main.class
+│       │           ├── manager/
+│       │           │   └── ArenaManager.class
+│       │           ├── model/
+│       │           │   ├── Canhao.class
+│       │           │   ├── ClasseTanque.class
+│       │           │   ├── Metralhadora.class
+│       │           │   ├── Modulo.class
+│       │           │   ├── Tanque.class
+│       │           │   └── TipoPiloto.class
+│       │           └── util/
+│       │               └── CSVHandler.class
+│       └── test-classes/
+│           └── battletanks/
+│               ├── CSVHandlerTest.class
+│               └── TanqueTest.class
+│
 ├── README.md
 └── LICENSE
+
 
 A estrutura pode variar conforme o progresso do projeto.
 
@@ -37,8 +77,6 @@ Linguagem: Java
 Versão recomendada: Java 17 ou superior
 
 Bibliotecas:
-
-java.awt e javax.swing (interface e renderização)
 
 Outras dependências específicas podem ser listadas no código
 
@@ -63,15 +101,11 @@ Certifique-se de estar usando uma JDK configurada corretamente no PATH.
 
 🔧 Funcionalidades
 
-Movimento e rotação do tanque do jogador
-
 Disparo de projéteis
-
-Colisões entre tanques, balas e obstáculos
 
 IA básica de inimigos
 
-Sistema de mapas e arenas
+Sistema de agendamento
 
 
 👥 Desenvolvido por
@@ -85,6 +119,4 @@ Pedro Andrade Gonçalves de Souza
 Júlia Labad Jatene
 
 
-📄 Licença
 
-Este projeto está sob a licença especificada no arquivo LICENSE.
