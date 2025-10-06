@@ -15,15 +15,15 @@ O código está estruturado em módulos que separam a lógica principal, entidad
 
 IsaacBattleTanks/
 │
-├── src/ # Código-fonte principal
-│ ├── main/ # Loop do jogo e execução principal
-│ ├── entities/ # Classes de tanques, projéteis e inimigos
-│ ├── map/ # Mapas e lógica de carregamento
-│ ├── utils/ # Funções auxiliares e constantes
-│ └── ui/ # Interface do jogo (menus, HUD, etc.)
+├── src/                 # Código-fonte principal
+│   ├── main/            # Loop do jogo e execução principal
+│   ├── entities/        # Classes de tanques, projéteis e inimigos
+│   ├── map/             # Mapas e lógica de carregamento
+│   ├── utils/           # Funções auxiliares e constantes
+│   └── ui/              # Interface do jogo (menus, HUD, etc.)
 │
-├── assets/ # Recursos (imagens, sons, sprites)
-├── out/ # Arquivos compilados (gerados automaticamente)
+├── assets/              # Recursos (imagens, sons, sprites)
+├── out/                 # Arquivos compilados (gerados automaticamente)
 ├── README.md
 └── LICENSE
 
