@@ -1,116 +1,166 @@
-![Java](https://img.shields.io/badge/Java-17%2B-orange?style=for-the-badge&logo=java&logoColor=white)
-![Maven](https://img.shields.io/badge/Maven-3.8%2B-red?style=for-the-badge&logo=apache-maven&logoColor=white)
-![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)
+# 🎮 BattleTanks - Sistema de Gerenciamento de Arenas
 
-BattleTanks
+**BattleTanks** é um sistema completo desenvolvido em Java para gerenciamento de batalhas de tanques em arenas, com foco em combates estratégicos entre tanques autônomos (IA) e controlados por jogadores.
 
-BattleTanks é um jogo desenvolvido em Java, com foco em combates entre tanques em arenas.
-O projeto implementa movimentação, tiro, colisões e comportamentos básicos de inimigos.
+## 📋 Descrição
 
+O sistema permite o cadastro e gerenciamento de tanques, agendamento de partidas, simulação de batalhas e análise de desempenho. Desenvolvido seguindo os princípios de Programação Orientada a Objetos, o projeto implementa herança, polimorfismo e encapsulamento em um sistema robusto e modular.
 
-📘 Descrição
+## 🗂 Estrutura do Projeto
 
-O jogo consiste em batalhas entre tanques.
-O jogador pode enfrentar inimigos controlados por IA.
-O código está estruturado em módulos que separam a lógica principal e utilidades.
-
-
-🗂 Estrutura do Projeto
-
-IsaacBattleTanks/
-
+```
+BattleTanks/
 │
-
-├── 📁 data/
-
-│ └── tanques.csv # Dados dos tanques
-
+├── data/                        # Arquivos de dados e persistência
+│   └── tanques.csv              # Arquivo CSV para importação/exportação
 │
-
-├── 📁 demo/
-
-│ ├── 📁 src/main/java/com/isaactanks/
-
-│ │ ├── 🎯 Main.java
-
-│ │ ├── 📁 manager/
-
-│ │ │ └── ArenaManager.java
-
-│ │ ├── 📁 model/
-
-│ │ │ ├── Canhao.java
-
-│ │ │ ├── Tanque.java
-
-│ │ │ └── ...
-
-│ │ └── 📁 util/
-
-│ │ └── CSVHandler.java
-
-│ └── 📁 src/test/java/
-
-│ ├── CSVHandlerTest.java
-
-│ └── TanqueTest.java
-
+├── src/
+│   ├── main/
+│   │   └── java/com/isaactanks/
+│   │       ├── Main.java                    # Classe principal com menu interativo
+│   │       ├── manager/
+│   │       │   ├── ArenaManager.java        # Gerenciador de tanques e batalhas
+│   │       │   └── PartidaManager.java      # Gerenciador de partidas agendadas
+│   │       ├── model/
+│   │       │   ├── Canhao.java              # Implementação do módulo Canhão
+│   │       │   ├── ClasseTanque.java        # Enum: LEVE, MÉDIO, PESADO
+│   │       │   ├── Metralhadora.java        # Implementação do módulo Metralhadora
+│   │       │   ├── Modulo.java              # Classe abstrata para módulos
+│   │       │   ├── Tanque.java              # Classe principal do tanque
+│   │       │   ├── TipoPiloto.java          # Enum: HUMANO, IA
+│   │       │   ├── Terreno.java             # Enum: DESERTO, URBANO, CAMPO_ABERTO
+│   │       │   ├── ModoBatalha.java         # Enum: TREINO, UM_VS_UM, TRES_VS_TRES
+│   │       │   └── StatusPartida.java       # Enum: AGENDADA, EM_ANDAMENTO, etc.
+│   │       └── util/
+│   │           └── CSVHandler.java          # Utilitário para manipulação de CSV
+│   │
+│   └── test/
+│       └── java/com/isaactanks/
+│           ├── CSVHandlerTest.java          # Testes para manipulação de CSV
+│           └── TanqueTest.java              # Testes para a classe Tanque
 │
+├── target/                      # Saída de compilação do Maven
+│   ├── classes/                 # Arquivos .compilados
+│   └── test-classes/            # Testes compilados
+│
+└── pom.xml                      # Configuração do Maven
+```
 
-└── 📄 README.md
+## ⚙️ Tecnologias
 
+- **Linguagem**: Java 21
+- **Gerenciador de Dependências**: Maven
+- **Testes**: JUnit 5
+- **Persistência**: Arquivos CSV
+- **Princípios de POO**: Herança, Polimorfismo, Encapsulamento
 
+## 🚀 Execução
 
-A estrutura pode variar conforme o progresso do projeto.
+### Pré-requisitos
+- Java 21 ou superior
+- Maven 3.6 ou superior
 
+### Compilação e Execução
 
-⚙️ Tecnologias
+```bash
+# Navegar até o diretório do projeto
+cd BattleTanks
 
-Linguagem: Java
+# Compilar o projeto
+mvn clean compile
 
-Versão recomendada: Java 17 ou superior
+# Executar a aplicação
+mvn exec:java -Dexec.mainClass="com.isaactanks.Main"
 
-Bibliotecas:
+# Executar testes unitários
+mvn test
 
-Outras dependências específicas podem ser listadas no código
+# Empacotar em JAR executável
+mvn package
+```
 
+## 🎯 Funcionalidades
 
-🚀 Execução
-1. Clonar o repositório
+### Sistema de Tanques
+- ✅ Cadastro de até 12 tanques simultâneos
+- ✅ Três classes distintas: Leve, Médio e Pesado
+- ✅ Sistema de módulos: Canhão e Metralhadora
+- ✅ Pilotos: Humano ou IA
+- ✅ Atributos dinâmicos: Blindagem, velocidade, poder de fogo
 
-git clone https://github.com/joaopkourym/IsaacBattleTanks.git
+### Sistema de Batalhas
+- ✅ Batalhas rápidas (combates individuais)
+- ✅ Agendamento de partidas com data/hora
+- ✅ Múltiplos modos: Treino, 1vs1, 3vs3
+- ✅ Efeitos de terreno: Deserto, Urbano, Campo Aberto
+- ✅ Sistema de times com distribuição automática
 
-cd IsaacBattleTanks
+### Recursos Avançados
+- ✅ Importação/Exportação em CSV
+- ✅ Tratamento robusto de erros
+- ✅ Testes unitários com JUnit
+- ✅ Menu interativo completo
 
-2. Compilar o código
+## 🎮 Como Jogar
 
-javac -d out src/**/*.java
+### Menu Principal
+```
+=== ARENA ISAAC TANKS ===
+1. Cadastrar Tanque
+2. Listar Tanques
+3. Simular Batalha Rápida
+4. Agendar Batalha
+5. Listar Batalhas Agendadas
+6. Simular Batalha Agendada
+7. Gerenciar Tanques em Partida
+8. Exportar Dados
+9. Importar Dados
+0. Sair
+```
 
-3. Executar o jogo
+### Exemplo de Uso
+1. **Cadastrar tanques** com diferentes classes e pilotos
+2. **Agendar partidas** definindo terreno, modo e duração
+3. **Adicionar tanques** aos times conforme o modo de jogo
+4. **Simular batalhas** com efeitos de terreno aplicados
+5. **Exportar/Importar** dados para persistência
 
-java -cp out Main
+## 🧪 Testes
 
-Certifique-se de estar usando uma JDK configurada corretamente no PATH.
+O projeto inclui testes unitários abrangentes:
 
+```bash
+# Executar todos os testes
+mvn test
 
-🔧 Funcionalidades
+# Executar testes específicos
+mvn test -Dtest=TanqueTest
+mvn test -Dtest=CSVHandlerTest
+```
 
-Disparo de projéteis
+## 📊 Características Técnicas
 
-IA básica de inimigos
+### Efeitos de Terreno
+- **Deserto**: Tanques 20% mais lentos
+- **Urbano**: Tanques 15% mais rápidos
+- **Campo Aberto**: Sem modificações
 
-Sistema de agendamento
+### Modos de Jogo
+- **Treino**: 1 tanque
+- **1vs1**: 2 tanques (1 por time)
+- **3vs3**: 6 tanques (3 por time)
 
+### Sistema de Dano
+- Cálculo polimórfico baseado em módulo e classe
+- Modificadores por distância e blindagem
+- Efeitos específicos por tipo de munição
 
-👥 Desenvolvido por
+## 👥 Time de desenvolvimento
 
-João Paulo Koury de Mendonça
+- **João Paulo Koury de Mendonça**
+- **Pedro Antônio de Souza Fernandes Filho**
+- **Pedro Andrade Gonçalves de Souza**
+- **Júlia Labad Jatene**
 
-Pedro Antônio de Souza Fernandes Filho
-
-Pedro Andrade Gonçalves de Souza
-
-Júlia Labad Jatene
-
-
+---
 
