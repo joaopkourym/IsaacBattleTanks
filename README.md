@@ -15,50 +15,25 @@ O código está estruturado em módulos que separam a lógica principal e utilid
 
 IsaacBattleTanks/
 │
-├── data/ # Arquivos de dados (ex: CSVs)
-│ └── tanques.csv
+├── 📁 data/
+│ └── tanques.csv # Dados dos tanques
 │
-├── demo/ # Módulo principal do jogo
-│ ├── pom.xml # Arquivo de configuração Maven
-│ ├── src/
-│ │ ├── main/
-│ │ │ └── java/com/isaactanks/
-│ │ │ ├── Main.java
-│ │ │ ├── manager/
-│ │ │ │ └── ArenaManager.java
-│ │ │ ├── model/
-│ │ │ │ ├── Canhao.java
-│ │ │ │ ├── ClasseTanque.java
-│ │ │ │ ├── Metralhadora.java
-│ │ │ │ ├── Modulo.java
-│ │ │ │ ├── Tanque.java
-│ │ │ │ └── TipoPiloto.java
-│ │ │ └── util/
-│ │ │ └── CSVHandler.java
-│ │ └── test/java/battletanks/
-│ │ ├── CSVHandlerTest.java
-│ │ └── TanqueTest.java
-│ │
-│ └── target/ # Saída de build (gerada automaticamente)
-│ ├── classes/com/isaactanks/
-│ │ ├── Main.class
-│ │ ├── manager/
-│ │ │ └── ArenaManager.class
-│ │ ├── model/
-│ │ │ ├── Canhao.class
-│ │ │ ├── ClasseTanque.class
-│ │ │ ├── Metralhadora.class
-│ │ │ ├── Modulo.class
-│ │ │ ├── Tanque.class
-│ │ │ └── TipoPiloto.class
-│ │ └── util/
-│ │ └── CSVHandler.class
-│ └── test-classes/battletanks/
-│ ├── CSVHandlerTest.class
-│ └── TanqueTest.class
+├── 📁 demo/
+│ ├── 📁 src/main/java/com/isaactanks/
+│ │ ├── 🎯 Main.java
+│ │ ├── 📁 manager/
+│ │ │ └── ArenaManager.java
+│ │ ├── 📁 model/
+│ │ │ ├── Canhao.java
+│ │ │ ├── Tanque.java
+│ │ │ └── ...
+│ │ └── 📁 util/
+│ │ └── CSVHandler.java
+│ └── 📁 src/test/java/
+│ ├── CSVHandlerTest.java
+│ └── TanqueTest.java
 │
-└── README.md
-
+└── 📄 README.md
 
 
 
