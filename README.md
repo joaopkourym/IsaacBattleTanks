@@ -1,3 +1,7 @@
+![Java](https://img.shields.io/badge/Java-17%2B-orange?style=for-the-badge&logo=java&logoColor=white)
+![Maven](https://img.shields.io/badge/Maven-3.8%2B-red?style=for-the-badge&logo=apache-maven&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)
+
 BattleTanks
 
 BattleTanks é um jogo desenvolvido em Java, com foco em combates entre tanques em arenas.
