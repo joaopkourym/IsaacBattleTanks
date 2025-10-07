@@ -17,9 +17,22 @@ public abstract class Modulo {
     
     public abstract double calcularDano(Tanque alvo, double distancia);
     
-    public String getNome() { return nome; }
-    public double getDanoBase() { return danoBase; }
-    public double getTempoRecarga() { return tempoRecarga; }
-    public double getAlcance() { return alcance; }
-    public String getTipoMunicao() { return tipoMunicao; }
+    public String getNome() { 
+        return nome; 
+    }
+
+    public double getDanoBase() { 
+        return danoBase; 
+    }
+
+    public double getTempoRecarga() { 
+        return tempoRecarga; 
+    }
+
+    public double getAlcance() { 
+        return alcance; 
+    }
+    public String getTipoMunicao() { 
+        return tipoMunicao; 
+    }
 }

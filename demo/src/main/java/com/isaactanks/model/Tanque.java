@@ -16,6 +16,7 @@ public class Tanque {
     private TipoPiloto piloto;
     private double integridade;
     private List<Modulo> modulos;
+    private double velocidadeOriginal; // Novo campo para armazenar velocidade original
     
     public Tanque(String codinome, ClasseTanque classe, TipoPiloto piloto) {
         if (codinome == null || codinome.trim().isEmpty()) {
@@ -44,7 +45,7 @@ public class Tanque {
         this(codinome, classe, TipoPiloto.HUMANO);
     }
     
-    private void configurarPorClasse() {
+    public void configurarPorClasse() {
         switch (classe) {
             case LEVE:
                 this.blindagem = 30;
@@ -64,6 +65,7 @@ public class Tanque {
             default:
                 throw new IllegalStateException("Classe de tanque desconhecida: " + classe);
         }
+        this.velocidadeOriginal = this.velocidade; // Atualiza velocidade original
     }
     
     private void equiparModulos() {
@@ -114,16 +116,15 @@ public class Tanque {
         }
         
         if (this.integridade <= 0) {
-            return; // Tanque ja destruido
+            return;
         }
         
         try {
-            // Garantir que blindagem esta em range valido
             double blindagemEfetiva = Math.max(0, Math.min(blindagem, 100));
             double danoEfetivo = dano * (1 - (blindagemEfetiva / 200));
             
             this.integridade -= danoEfetivo;
-            this.integridade = Math.max(0, this.integridade); // Nao deixar negativo
+            this.integridade = Math.max(0, this.integridade);
             
         } catch (Exception e) {
             System.err.println("Erro ao calcular dano: " + e.getMessage());
@@ -138,13 +139,13 @@ public class Tanque {
         try {
             double recargaBase = modulo.getTempoRecarga();
             switch (classe) {
-                case LEVE: return Math.max(0.1, recargaBase * 0.8); // Minimo 0.1s
+                case LEVE: return Math.max(0.1, recargaBase * 0.8);
                 case PESADO: return recargaBase * 1.3;
                 default: return recargaBase;
             }
         } catch (Exception e) {
             System.err.println("Erro ao calcular recarga: " + e.getMessage());
-            return modulo.getTempoRecarga(); // Valor padrao em caso de erro
+            return modulo.getTempoRecarga();
         }
     }
     
@@ -170,12 +171,52 @@ public class Tanque {
         return classe; 
     }
     
-    public double getBlindagem() { return Math.max(0, blindagem); }
-    public double getVelocidade() { return Math.max(0, velocidade); }
-    public double getPoderDeFogo() { return Math.max(0, poderDeFogo); }
-    public TipoPiloto getPiloto() { return piloto != null ? piloto : TipoPiloto.HUMANO; }
-    public double getIntegridade() { return Math.max(0, Math.min(integridade, 100)); }
-    public List<Modulo> getModulos() { return new ArrayList<>(modulos); }
+    public double getBlindagem() { 
+        return Math.max(0, blindagem); 
+    }
+
+    public double getVelocidade() { 
+        return Math.max(0, velocidade); 
+    }
+
+    public double getPoderDeFogo() { 
+        return Math.max(0, poderDeFogo); 
+    }
+
+    public TipoPiloto getPiloto() { 
+        return piloto != null ? piloto : TipoPiloto.HUMANO; 
+    }
+
+    public double getIntegridade() { 
+        return Math.max(0, Math.min(integridade, 100)); 
+    }
+
+    public List<Modulo> getModulos() { 
+        return new ArrayList<>(modulos); 
+    }
+    
+    // Novos setters para modificar atributos durante a partida
+    public void setVelocidade(double velocidade) {
+        this.velocidade = velocidade;
+    }
+    
+    public void setBlindagem(double blindagem) {
+        this.blindagem = blindagem;
+    }
+    
+    public void setPoderDeFogo(double poderDeFogo) {
+        this.poderDeFogo = poderDeFogo;
+    }
+    
+    // Getter para velocidade original
+    public double getVelocidadeOriginal() {
+        return velocidadeOriginal;
+    }
+    
+    // Método para resetar aos valores originais (após partida)
+    public void resetarParaOriginal() {
+        configurarPorClasse();
+    }
     
     public boolean estaOperacional() {
         return integridade > 0;
@@ -186,7 +227,7 @@ public class Tanque {
         String status = estaOperacional() ? 
             String.format("%.1f%%", integridade) : "DESTRUIDO";
         
-        return String.format("Tanque #%d: %s [%s] - %s", 
-                           id, codinome, classe, status);
+        return String.format("Tanque #%d: %s [%s] - %s - Vel: %.1f - Blind: %.1f", 
+                           id, codinome, classe, status, velocidade, blindagem);
     }
 }
